@@ -1,5 +1,6 @@
 from task_list import TaskList
 from tasks import Task
+from users import Owner
 import datetime
 
 def propagate_task_list(task_list: TaskList) -> TaskList:
@@ -14,7 +15,9 @@ def propagate_task_list(task_list: TaskList) -> TaskList:
 
 def main() -> None:
     """Main function to run the To-Do List Manager."""
-    owner = input("Enter your name for the task list: ")
+    name = input("Enter your name for the task list: ")
+    email = input("Enter your email: ")
+    owner = Owner(name, email)
     task_list = TaskList(owner)
     task_list = propagate_task_list(task_list)
 

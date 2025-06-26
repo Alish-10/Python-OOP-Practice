@@ -90,10 +90,6 @@ print(my_f_string)
 #Task Temperature Conversion
 
 
-# ...existing code...
-
-#Task Temperature Conversion
-
 celsius_input = 45 
 
 degree_f = (celsius_input * 9/5) + 32

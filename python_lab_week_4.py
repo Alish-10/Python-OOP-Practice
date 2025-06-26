@@ -18,7 +18,7 @@ class Task:
 
 class TaskList:
     def __init__(self, owner):
-        self.owner = owner
+        self.owner = owner.upper()
         self.tasks = []
 
     def add_task(self, task):
@@ -37,10 +37,12 @@ class TaskList:
         if 0 < task_number <= len(self.tasks):
             removed_task = self.tasks.pop(task_number - 1)
             print(f"Task '{removed_task.title}' removed from {self.owner}'s task list.")
+            
         else:
             print("Invalid task number.")
 
     def list_options(self):
+        """Display the options for managing tasks."""
         while True:
             print("\nTo-Do List Manager")
             print("1. Add a task")
@@ -101,9 +103,10 @@ class TaskList:
 my_task_list = TaskList("Alish")
 print(f"Task list created for {my_task_list.owner}.")
 
-someone_elses_task_list = TaskList("John")
-print(f"Task list created for {someone_elses_task_list.owner}.")
+# someone_elses_task_list = TaskList("John")
+# print(f"Task list created for {someone_elses_task_list.owner}.")
 
 # Test functionality
 my_task_list.tasks = [Task("Do Homework"), Task("Do Laundry"), Task("Go Shopping")]
 my_task_list.list_options()
+

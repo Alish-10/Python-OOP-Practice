@@ -1,18 +1,19 @@
 from typing import List
 from tasks import Task
+from users import Owner
 import datetime
 
 class TaskList:
     """Manages a list of Task objects for a specific owner."""
 
-    def __init__(self, owner: str):
+    def __init__(self, owner: Owner):
         """
         Initializes a new TaskList object.
 
         Args:
-            owner (str): The name of the task list owner.
+            owner (Owner): The owner of the task list.
         """
-        self.owner: str = owner
+        self.owner: Owner = owner
         self.tasks: List[Task] = []
 
     def add_task(self, task: Task) -> None:
@@ -33,17 +34,18 @@ class TaskList:
         if not self.tasks:
             print("No tasks in the list.")
         else:
-            print(f"{self.owner}'s tasks:")
+            print(f"{self.owner.name}'s tasks:")
             for idx, task in enumerate(self.tasks, 1):
                 print(f"{idx}. {task}")
 
     def view_overdue_tasks(self) -> None:
         """Displays all overdue tasks."""
         now = datetime.datetime.now()
-        overdue = [task for task in self.tasks if not task.completed and task.date_due < now]
-        if not overdue:
+        overdue_tasks = [task for task in self.tasks if task.date_due < now and not task.completed]
+        
+        if not overdue_tasks:
             print("No overdue tasks.")
         else:
             print("Overdue tasks:")
-            for idx, task in enumerate(overdue, 1):
+            for idx, task in enumerate(overdue_tasks, 1):
                 print(f"{idx}. {task}")

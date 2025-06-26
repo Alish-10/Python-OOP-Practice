@@ -30,7 +30,7 @@ selected_color = color_list[1:3]
 print("Selected colors from the list:", selected_color)
 
 
-Task User Input and Conditions
+# Task User Input and Conditions
 user_input = input("Please enter your age: ")
 try:
     age = int(user_input)

@@ -42,3 +42,5 @@ class Task:
         return (f"Title: {self.title} | Status: {status} | "
                 f"Created: {self.date_created.strftime('%Y-%m-%d')} | "
                 f"Due: {self.date_due.strftime('%Y-%m-%d')}{desc}")
+        
+ 
