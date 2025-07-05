@@ -43,4 +43,29 @@ class Task:
                 f"Created: {self.date_created.strftime('%Y-%m-%d')} | "
                 f"Due: {self.date_due.strftime('%Y-%m-%d')}{desc}")
         
- 
+    # ...existing Task code...
+
+class RecurringTask(Task):
+    """
+    Represents a recurring task that repeats at a specified interval.
+    """
+    def __init__(self, title: str, date_due: datetime.datetime, interval: datetime.timedelta, description: Optional[str] = None):
+        super().__init__(title, date_due, description)
+        self.interval: datetime.timedelta = interval
+        self.completed_dates: List[datetime.datetime] = []
+
+    def mark_completed(self) -> None:
+        """Mark the recurring task as completed and update the due date."""
+        self.completed_dates.append(datetime.datetime.now())
+        self.date_due = self._compute_next_due_date()
+        self.completed = False  # Recurring tasks are never fully 'completed'
+
+    def _compute_next_due_date(self) -> datetime.datetime:
+        """Compute the next due date based on the interval."""
+        return self.date_due + self.interval
+
+    def __str__(self) -> str:
+        completed_str = ", ".join([dt.strftime("%Y-%m-%d") for dt in self.completed_dates]) or "None"
+        interval_str = f"Every {self.interval.days} days" if self.interval.days else f"Every {self.interval.seconds // 3600} hours"
+        return (f"Recurring Task: {self.title} | Due: {self.date_due.strftime('%Y-%m-%d')} | "
+                f"Interval: {interval_str} | Completed Dates: {completed_str}")

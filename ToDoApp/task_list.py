@@ -49,3 +49,11 @@ class TaskList:
             print("Overdue tasks:")
             for idx, task in enumerate(overdue_tasks, 1):
                 print(f"{idx}. {task}")
+    def get_task(self, index: int):
+        """
+        Returns the task at the given 1-based index, or None if out of range.
+        """
+        if 1 <= index <= len(self.tasks):
+            return self.tasks[index - 1]
+        else:
+            return None
