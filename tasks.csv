@@ -1,2 +1,5 @@
-title,type,date_due,completed,interval,completed_dates,date_created
-Cook food,Task,2025-07-25,TRUE,,,2025-07-17
+title,type,date_due,completed,interval,completed_dates,date_created,priority,description,owner_name,owner_email
+cook,PriorityTask,2025-07-19,FALSE,,,2025-07-17,3,cook,alish,alish@gmail.com
+play games,RecurringTask,,TRUE,"3 days, 0:00:00",,2025-07-17,,,alish,alish@gmail.com
+cook food/ milk,PriorityTask,2025-07-26,FALSE,,,2025-07-17,2,boil milk,alish,alish@gmail.com
+cook,PriorityTask,2025-07-19,FALSE,,,2025-07-17,3,cook,alish,alish@gmail.com

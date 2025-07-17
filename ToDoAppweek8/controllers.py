@@ -55,4 +55,4 @@ class TaskManagerController:
 
     def save_tasks(self, file_path):
         dao = TaskCsvDAO(file_path)
-        dao.save_all_tasks(self.task_list.tasks)
+        dao.save_all_tasks(self.task_list.tasks, self.task_list.owner)

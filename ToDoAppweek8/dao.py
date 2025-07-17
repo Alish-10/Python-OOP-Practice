@@ -136,6 +136,7 @@ class TaskCsvDAO:
         return task_list
     
     def save_all_tasks(self, tasks: list[Task], owner: Owner = Owner) -> None:
+        print("Saving tasks to CSV...")
         with open(self.storage_path, "w", newline='') as file:
             writer = csv.DictWriter(file, fieldnames=self.fieldnames)
             writer.writeheader()
