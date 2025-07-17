@@ -38,6 +38,9 @@ class TaskList:
         for ix, task in enumerate(self.tasks):
             if task.date_due and task.date_due < datetime.now():
                 print(ix, task)
+    def get_overdue_tasks(self) -> list[Task]:
+        """Returns a list of overdue tasks."""
+        return [task for task in self.tasks if task.date_due and task.date_due < datetime.now()]
 
     def get_task(self, ix: int) -> Task:
         """Returns a task from the task list by index.
